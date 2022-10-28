@@ -204,6 +204,17 @@ export const applyJobPost = async (payload) => {
       appliedOn: moment().format("DD-MM-YYYY HH:mm A"),
       status: "pending",
     });
+
+    // send notification to job poster
+    await addDoc(
+      collection(fireDB, "users", job.postedByUserId, "notifications"),
+      {
+        title: `${user.name} has applied for your job post ${job.title}`,
+        onClick: `/posted-jobs`,
+        createdAt: moment().format("DD-MM-YYYY HH:mm A"),
+        status: "unread",
+      }
+    );
     return {
       success: true,
       message: "Job applied successfully",
