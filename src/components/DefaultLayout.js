@@ -58,12 +58,7 @@ function DefaultLayout({ children }) {
       icon: <i class="ri-home-7-line"></i>,
       path: "/",
     },
-    {
-      title: "Applications",
-      onClick: () => navigate("/admin/applications"),
-      icon: <i class="ri-file-list-3-line"></i>,
-      path: "/admin/applications",
-    },
+
     {
       title: "Jobs",
       onClick: () => navigate("/admin/jobs"),
